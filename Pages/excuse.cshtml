@@ -1,0 +1,93 @@
+@page
+@model ExcuseModel
+@{
+    ViewData["Title"] = Model.lang["title"];
+}
+
+<!doctype html>
+<html lang="en">
+	<body>
+		<div class="container">
+			<div class="row justify-content-left">
+				<h3>
+					@Model.lang["select1Lbl"]
+				</h3>
+			</div>
+			<form asp-page-handler="submit" method="POST">
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="excuseRadios" id="excuseRadios1" value="option1" checked>
+						<label class="form-check-label" for="excuseRadios1">@Model.lang["opt1-1"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="excuseRadios" id="excuseRadios2" value="option2">
+						<label class="form-check-label" for="excuseRadios2">@Model.lang["opt1-2"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="excuseRadios" id="excuseRadios3" value="option3">
+						<label class="form-check-label" for="excuseRadios3">@Model.lang["opt1-3"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="excuseRadios" id="excuseRadios4" value="option4">
+						<input type="text" class="form-control" name="customExcuse" id="inputOtherExcuse" placeholder="@Model.lang["opt1-4"]...">
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<h3>
+						@Model.lang["select2Lbl"]
+					</h3>
+				</div>
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="requestRadios" id="requestRadios1" value="@Model.lang[""]" checked>
+						<label class="form-check-label" for="requestRadios1">@Model.lang["opt2-1"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="requestRadios" id="requestRadios2" value="option2">
+						<label class="form-check-label" for="requestRadios2">@Model.lang["opt2-2"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<h3>
+						@Model.lang["select3Lbl"]
+					</h3>
+				</div>
+				<div class="row justify-content-left">
+					<select class="custom-select-sm" name="selection" id="inputGroupSelect">
+						<option selected>@Model.lang["selectFirst"]</option>
+						@if (Model.days!=null){
+						@for (int i=0;i<Model.days.Count;i++)
+						{	
+							@if(i==Model.clickedIndex){
+								<option selected value=@Model.days[i]>@Model.days[i]</option>
+							} else{
+								<option value=@Model.days[i]>@Model.days[i]</option>
+							}
+						}
+						}
+					</select>
+				</div>
+				<div class="row justify-content-left">
+					<button class="btn btn-primary btn-lg" name="button" type="submit" value="Submit">@Model.lang["submit"]</button>
+					<button class="btn btn-secondary btn-lg" name="button" type="submit" value="Go Back">@Model.lang["goBack"]</button>
+				</div>
+				<div class="row justify-content-left">
+					<div id="State">@Model.State</div>
+				</div>
+			</form>
+		</div>
+		<script>
+		
+		
+		
+		</script>
+	</body>
+</html>

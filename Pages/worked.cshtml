@@ -1,0 +1,222 @@
+@page
+@model WorkedModel
+@{
+    ViewData["Title"] = Model.lang["title"];
+}
+<!doctype html>
+<html lang="en">
+	<div class="fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+			<a class="navbar-brand" href="/login">P D K S</a>
+			
+			<form asp-page-handler="logout" method="POST" class=" ml-auto mr-2">
+				<div class="row justify-content-between ">
+						<button class="btn btn-secondary btn-xs mr-5" type="submit"name="button" value="Logout">@Model.lang["logoutBtn"]</button>
+						<div class="row justify-content-end">
+						<div class="btn-group btn-group mr-5">
+							<button class="btn btn-info btn-xs" type="submit"name="button" value="EN">EN</button>
+							<button class="btn btn-danger btn-xs" type="submit"name="button" value="TR">TR</button>
+						</div></div>
+					<button type="button" class="btn btn-success mr-5" data-toggle="modal" data-target="#modalPW">@Model.lang["changePWBtn"]</button>
+				</div>
+			</form>
+    	</nav>
+	</div>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center">
+			<h1>@Model.lang["welcome"] @Model.Name</h1></div>
+			<!-- PWChangeModal -->
+			<div class="modal" id="modalPW" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalTitle">@Model.lang["modalPWTitle"]</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+							<h6>@Model.lang["pwLbl1"]</h6>
+							<input type="password" class="form-control" id="prevPwInput" placeholder="" aria-label="Name" aria-describedby="basic-addon2">
+							<h6>@Model.lang["pwLbl2"]</h6>
+							<input type="password" class="form-control" id="newPwInput" placeholder="" aria-label="Name" aria-describedby="basic-addon2">
+							<h6>@Model.lang["pwLbl3"]</h6>
+							<input type="password" class="form-control" id="newPwInput2" placeholder="" aria-label="Name" aria-describedby="basic-addon2">
+						
+						<h4 id="modalPWState"></h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">@Model.lang["modalClose"]</button>
+						<button type="button" id="pwModalSubmitBtn" value="Submit" class="btn btn-primary">@Model.lang["modalSubmit"]</button>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div>@Model.lang["absRemind"]</div>
+			<div class="input-group m-4">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="ChangeWeek('left')"><</button>
+				</div>
+				<input type="text" class="form-control-xs" placeholder="Week XX:" aria-label="Week 23:" aria-describedby="button-addon2" disabled id="weekNo">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="ChangeWeek('right')">></button>
+				</div>
+			</div>
+			<div>@Model.lang["excuseLbl"]</div>
+			<canvas id="workChart" width="400" height="400"></canvas>
+			<div class="row justify-content-left m-4">
+				<form asp-page-handler="excuseStates" method="POST">
+					<input class="btn btn-primary btn-lg" type="submit" value='@Model.lang["excuseStatesBtn"]'>
+				</form>
+			</div>
+			@if(Model.UserIsAdmin){
+				<div class="row justify-content-left m-4">
+					<form asp-page-handler="goBack" method="POST">
+						<input class="btn btn-primary btn-lg" type="submit" value='@Model.lang["goBack"]'>
+					</form>
+				</div>
+			}
+		</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
+		type="text/javascript"></script>
+		<script>
+			var weeks;
+			var workChart;
+			var ctx;
+			var weekNumber;
+			window.onload = function Starter(val) {
+				weeks = @WorkedModel.JScriptConvert.SerializeObject(Model.weeks);
+				weekNumber=Object.keys(weeks)[0];
+				document.getElementById("weekNo").value='@Model.lang["week"]'+weekNumber;
+				DrawGraph(weekNumber);
+			}
+			$("#pwModalSubmitBtn").on('click', function () {
+				$.ajax({ 
+					method:"POST",
+					url: "/admin?handler=PWChange",
+					data: {prevPwInput:$("#prevPwInput").val(),
+							newPwInput:$("#newPwInput").val(),
+							newPwInput2:$("#newPwInput2").val()},
+					headers: {
+      					 RequestVerificationToken: 
+           					$('input:hidden[name="__RequestVerificationToken"]').val()}
+				})
+				.done(function(data) { 
+					$("#modalPWState").text(data);
+				});
+			});
+			function graphClickEvent(event, array){
+				if(array[0]){
+					let element = workChart.getElementAtEvent(event);
+					if (element.length > 0) {
+						var series= element[0]._model.datasetLabel;
+						var label = element[0]._model.label;
+						var value = workChart.data.datasets[element[0]._datasetIndex].data[element[0]._index];
+						if(series=="Missing"){
+							console.log("giving excuse to day "+label);
+							window.location.replace("/excuse?day="+label.substr(label.length - 10));
+						}
+					}
+				}
+			}
+			function ChangeWeek(side){
+				weekNumber=parseInt(document.getElementById("weekNo").value.match(/\d+/)[0]);
+				if (side=="left"){
+					if(Object.keys(weeks)[0]==weekNumber) return;
+					weekNumber-=1;
+				}else{
+					if(Object.keys(weeks)[Object.keys(weeks).length-1]==weekNumber) return;
+					weekNumber+=1;
+				}
+				workChart.destroy();
+				document.getElementById("weekNo").value='@Model.lang["week"]'+weekNumber;
+				DrawGraph(weekNumber);
+			}
+			function DrawGraph(weekNumber){
+				console.log(weeks[36]);
+				ctx = document.getElementById("workChart").getContext('2d');
+				var worked=[];
+				var missing=[];
+				var overtime=[];
+				var dates=[];
+				var givenExcuse=[];
+				var i;
+				if (weekNumber==null){
+					i=Object.keys(weeks)[0];
+				} else{
+					i=weekNumber;
+				}
+				worked.push(weeks[i].days["monday"]);
+				worked.push(weeks[i].days["tuesday"]);
+				worked.push(weeks[i].days["wednesday"]);
+				worked.push(weeks[i].days["thursday"]);
+				worked.push(weeks[i].days["friday"]);
+				try{
+					dates.push("MO / "+weeks[i].dates["monday"].slice(0, -9));
+					dates.push("TU / "+weeks[i].dates["tuesday"].slice(0, -9));
+					dates.push("WE / "+weeks[i].dates["wednesday"].slice(0, -9));
+					dates.push("TH / "+weeks[i].dates["thursday"].slice(0, -9));
+					dates.push("FR / "+weeks[i].dates["friday"].slice(0, -9));
+				}catch(err){
+					console.log(err.message);
+				}
+				for(var j in worked){
+					if(worked[j]<8){
+						if(weeks[i].dayReqs[Object.keys(weeks[i].dayReqs)[j]]!=2){
+							console.log(weeks[i].dayReqs[Object.keys(weeks[i].dayReqs)[j]]);
+							givenExcuse.push((8-worked[j]));
+							missing.push(0);
+						}else{
+							missing.push((8-worked[j]));
+							givenExcuse.push(0);
+						}
+						overtime.push(0);
+					}else if(worked[j]>8){
+						overtime.push(worked[j]-8);
+						missing.push(0);
+						givenExcuse.push(0);
+						worked[j]=8;
+					}else{
+						missing.push(0);
+						givenExcuse.push(0);
+						overtime.push(0);
+					}
+				}
+				workChart = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: dates,
+						datasets: [{
+							label:"Regular",
+							data: [8, 8, 8, 8, 8],
+							borderColor:"black",
+							borderWidth:"4",
+							type:'line'
+						},{
+							label:"Worked",
+							data: worked,
+							backgroundColor: 'blue'
+						},{
+							label:"Missing",
+							data: missing,
+							backgroundColor: 'red'
+						},{
+							label:"Overtime",
+							data: overtime,
+							backgroundColor: 'green'
+						},{
+							label:"GivenExcuse",
+							data: givenExcuse,
+							backgroundColor: 'orange'
+						}]
+					},
+					options: {
+						onClick: graphClickEvent,
+						scales: {xAxes: [{stacked:true}],yAxes: [{stacked:true}]}
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

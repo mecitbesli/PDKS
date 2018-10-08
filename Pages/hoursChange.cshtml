@@ -1,0 +1,57 @@
+@page
+@model HoursChangeModel
+@{
+    ViewData["Title"] = Model.lang["title"];
+}
+
+<!doctype html>
+<html lang="en">
+	<body>
+		<div class="container">
+			<div class="row justify-content-left">
+				<h3>
+					@Model.lang["selectIdLbl"]
+				</h3>
+			</div>
+			<form method="POST">
+				<div class="row justify-content-left m-3">
+					<select class="custom-select-sm" name="idSelect" id="idSelect">
+						<option selected>Id - @Model.lang["name"]</option>
+						@if (Model.users!=null){
+						@foreach (var user in Model.users)
+						{	
+							<option value=@user.Key>@user.Key - @user.Value</option>
+						}
+						}
+					</select>
+				</div>
+				<div class="row justify-content-left">
+					<h3>
+						@Model.lang["selectLbl"]
+					</h3>
+				</div>
+				<div class="row justify-content-left m-3">
+					<select class="custom-select-sm" name="shiftSelect" id="shiftSelect">
+						<option selected>@Model.lang["selectFirst"]</option>
+						<option value="1">08:00 - 17:00 - 1</option>
+						<option value="2">08:00 - 18:00 - 2</option>
+						<option value="3">09:00 - 18:00 - 1</option>
+						<option value="4">09:00 - 19:00 - 2</option>
+					</select>
+				</div>
+				<div class="row justify-content-left m-3">
+					<button class="btn btn-info btn-lg" type="submit" name="button" value="Check Existing">@Model.lang["checkBtn"]</button>
+				</div>
+				<div class="row justify-content-left m-3">
+					<button class="btn btn-primary btn-lg" type="submit" name="button" value="Submit">@Model.lang["submit"]</button>
+					<button class="btn btn-secondary btn-lg" type="submit" name="button" value="Go Back">@Model.lang["goBack"]</button>
+				</div>
+				<div class="row justify-content-left m-3">
+					<div id="State">@Model.State</div>
+				</div>
+			</form>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>

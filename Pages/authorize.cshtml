@@ -1,0 +1,73 @@
+@page
+@model AuthorizeModel
+@{
+    ViewData["Title"] = Model.lang["title"];
+}
+<!doctype html>
+<html lang="en">
+	<body>
+		<div class="container">
+			<div class="row justify-content-left">
+				<h3>
+					@Model.lang["selectIdLbl"]
+				</h3>
+			</div>
+			<form asp-page-handler="auth" method="POST">
+				<div class="row justify-content-left m-3">
+					<select input type ="text" name = "selection"  class="custom-select-sm" id="inputGroupSelect">
+						<option selected>Id</option>
+						@if (Model.auths!=null){
+							@for (int i=0;i<Model.auths.Count;i++)
+							{
+								<option value=@Model.auths[i].Id>@Model.auths[i].Id</option>
+							}
+						}
+					</select>
+				</div>
+				<div class="row justify-content-left">
+					<h3>
+						@Model.lang["selectAuthLbl"]
+					</h3>
+				</div>
+				<div class="row justify-content-left m-3">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="authCheckboxes1" id="authCheckboxes1">
+						<label class="form-check-label" for="authCheckboxes1">@Model.lang["custSel"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left m-3">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="authCheckboxes2" id="authCheckboxes2">
+						<label class="form-check-label" for="authCheckboxes2">@Model.lang["requSel"]</label>
+					</div>
+				</div>
+				<div class="row justify-content-left m-3">
+					<button class="btn btn-primary btn-lg" name="button" type="submit" value="Authorize">@Model.lang["positive"]</button>
+					<button class="btn btn-danger btn-lg" name="button" type="submit" value="Revoke">@Model.lang["negative"]</button>
+					
+				</div>
+				<div class="row justify-content-left m-3">
+					<button class="btn btn-secondary btn-lg" name="button" type="submit" value="Go Back">@Model.lang["goBack"]</button>
+				</div>
+				<div class="row justify-content-left">
+					<h6>@Model.State</h6>
+				</div>
+			</form>
+		</div>
+		<script>
+			window.onload = function ButtonStatus(val) {
+				var url = new URL(window.location.href);
+				var params = url.searchParams;
+				console.log(params);
+				var sel=document.getElementById("inputGroupSelect");
+				var opts = sel.options;
+				for (var opt, j = 0; opt = opts[j]; j++) {
+					if (opt.value == params.get("Id")) {
+						sel.selectedIndex = j;
+						break;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

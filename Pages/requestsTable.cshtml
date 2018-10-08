@@ -1,0 +1,50 @@
+@page
+@model RequestsTableModel
+@{
+    ViewData["Title"] = Model.lang["title"];
+	var reqs = (List<RequestsTableModel.Data>)ViewData["Table"] ;
+}
+<!doctype html>
+<html lang="en">
+	<body>
+		<div class="container">
+			<table class="table table-striped table-bordered table-sm table-responsive-sm">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Id</th>
+						<th scope="col">@Model.lang["userId"]</th>
+						<th scope="col">@Model.lang["username"]</th>
+						<th scope="col">@Model.lang["excuse"]</th>
+						<th scope="col">@Model.lang["request"]</th>
+						<th scope="col">@Model.lang["day"]</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (reqs!=null){
+						@for (int i=0;i<reqs.Count;i++)
+						{
+							<tr>
+							<th scope="row">@(i+1)</th> 
+							<td>@reqs[i].Id</td>
+							<td>@reqs[i].UserId</td>
+							<td>@reqs[i].Name</td>
+							<td>@reqs[i].Excuse</td>
+							<td>@reqs[i].Request</td>
+							<td>@reqs[i].Day</td>
+							</tr>
+						}
+					}
+				</tbody>
+			</table>
+			<div class="row justify-content-left">
+				<h5>@Model.lang["req1"]<br>@Model.lang["req0"]<h5>
+			</div>
+			<form method="POST">
+			<div class="row justify-content-center">
+				<input class="btn btn-primary btn-lg" name="button" type="submit" value="@Model.lang["goBack"]">
+			</div>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<!doctype html>
+<html lang="en">
+	<body>
+		<form method="POST">
+		<div class="container">
+			<div class="row justify-content-center">
+				<h3>Username</h3>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-xs form-group">
+					<input type="text" class="form-control" name="inputUsername">
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<h3>Password</h3>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-xs">
+					<input type="password" class="form-control" name="inputPassword">
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-xs">
+					<div id="Error">@Model.Error</div>
+					<div id="State">@Model.State</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<input class="btn btn-primary btn-lg" type="submit" value="Login" id="submitBtn">
+			</div>
+		</div>
+		</form>
+		<script type="text/javascript">
+		
+		</script>
+	</body>
+</html>
