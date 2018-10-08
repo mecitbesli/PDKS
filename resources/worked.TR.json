@@ -1,0 +1,22 @@
+{
+    "title": "Çalışma Saatler",
+    "logoutBtn": "Çıkış",
+    "welcome": "Hoşgeldiniz, ",
+    "absRemind": "Eğer eksik gününüz varsa lütfen aşağıda bu günler için mazeret giriniz.",
+    "week": "Hafta: ",
+    "excuseLbl": "Mazeret girmek için grafikteki kırmızı bölümlere tıklayınız.",
+    "goBack": "Geri",
+    "changePWBtn": "Şifre Değiştir",
+    "modalPWTitle": " ",
+    "pwLbl1": "Eski şifrenizi yazınız:",
+    "pwLbl2": "Yeni şifrenizi yazınız:",
+    "pwLbl3": "yeni şifrenizi tekrar yazınız:",
+    "respPWMatchErr": "Şifreler uyuşmuyor",
+    "serverErr": "Sunucu hatası",
+    "wrongPWErr": "Girdiğiniz şifre hatalı",
+    "shortPWErr": "Yeni şifre 6 karakterden kısa",
+    "pwSuccess": "Şifre değiştirildi",
+    "modalClose": "Kapat",
+    "modalSubmit": "Tamam",
+    "excuseStatesBtn": "Mazeret Sonuçlarınızı Görün"
+}

@@ -1,0 +1,10 @@
+{
+    "title": "Shift Change",
+    "selectIdLbl": "Please select the Id you want to change",
+    "name": "Name",
+    "selectLbl": "Select from the predefined shifts",
+    "selectFirst": "Start Hour - End Hour - Break Time",
+    "checkBtn": "Check Existing Shifts",
+    "submit": "Submit",
+    "goBack": "Go Back"
+}

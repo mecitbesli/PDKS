@@ -1,0 +1,15 @@
+{
+    "title": "Eksik Gün Raporu",
+    "select1Lbl": "Eksik saatleriniz için sebep seçiniz",
+    "opt1-1": "Sampaş için başka bir şirkette çalışıyordum.",
+    "opt1-2": "Hastaydım",
+    "opt1-3": "Kişisel problemlerim vardı/var.",
+    "opt1-4": "Diğer",
+    "select2Lbl": "Eksik saatlerinizle ilgili isteğinizi seçiniz.",
+    "opt2-1": "Sampaş benim eksik saat durumumu düzeltmeli",
+    "opt2-2": "Tatil günümü kullanmak istiyorum",
+    "select3Lbl": "Mazeret vermek istediğiniz günü seçiniz",
+    "selectFirst": "Günü buradan seçiniz",
+    "submit": "Gönder",
+    "goBack": "Grafiğe Geri Dön"
+}

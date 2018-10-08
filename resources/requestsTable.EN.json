@@ -1,0 +1,11 @@
+{
+    "title": "Request Table",
+    "userId": "UserId",
+    "username": "Username",
+    "excuse": "Excuse",
+    "request": "Request",
+    "day": "Day",
+    "req1": "Request 1: Status change",
+    "req0": "Request 0: Use day off",
+    "goBack": "Go Back"
+}

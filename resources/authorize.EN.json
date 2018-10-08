@@ -1,0 +1,10 @@
+{
+    "title": "Authorize",
+    "selectIdLbl": "Please select the Id you want to change",
+    "selectAuthLbl": "Select the authorization type(s)",
+    "custSel": "Work Hours Customization",
+    "requSel": "User Requests Responses",
+    "positive": "Authorize",
+    "negative": "Revoke",
+    "goBack": "Go Back"
+}

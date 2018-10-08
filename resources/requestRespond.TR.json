@@ -1,0 +1,10 @@
+{
+    "title": "İstek Cevap",
+    "goTableLbl": "Kullanıcı isteklerini kontrol edebilirsiniz",
+    "goTableBtn": "İstekleri Göster",
+    "selectLbl": "Kullanıcıyı ve yaptığı isteğin Idsini seçiniz",
+    "selectFirst": "KullanıcıId - Ad - İstekId",
+    "accept": "Kabul et",
+    "decline": "Reddet",
+    "goBack": "Geri"
+}

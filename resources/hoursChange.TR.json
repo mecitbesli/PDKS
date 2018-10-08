@@ -1,0 +1,10 @@
+{
+    "title": "Çalışma Saatleri",
+    "selectIdLbl": "Lütfen değiştirmek istediğiniz Id'yi seçiniz",
+    "name": "Ad",
+    "selectLbl": "Öntanımlı çalışma saatlerinden seçiniz",
+    "selectFirst": "Başlama Saati - Bitiş Saati - Mola Süresi",
+    "checkBtn": "Şuanki Çalışma Saatleri",
+    "submit": "Kaydet",
+    "goBack": "Geri"
+}

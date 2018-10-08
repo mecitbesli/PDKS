@@ -1,0 +1,8 @@
+{
+    "title": "Çalışma Saatleri",
+    "username": "KullanıcıAdı",
+    "startHr": "BaşlangıçSa",
+    "endHr": "BitişSa",
+    "breakTime": "MolaSüre",
+    "goBack": "Geri"
+}

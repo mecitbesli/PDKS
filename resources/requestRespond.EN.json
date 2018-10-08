@@ -1,0 +1,10 @@
+{
+    "title": "Request Respond",
+    "goTableLbl": "You can check the user requests table",
+    "goTableBtn": "Check Requests",
+    "selectLbl": "Please select the user and Id of the request",
+    "selectFirst": "UserId - Name - RequestId",
+    "accept": "Accept",
+    "decline": "Decline",
+    "goBack": "Go Back"
+}

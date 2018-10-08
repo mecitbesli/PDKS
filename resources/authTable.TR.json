@@ -1,0 +1,11 @@
+{
+    "title": "Yetki Tablosu",
+    "username": "KullanıcıAdı",
+    "custom": "Farklılık",
+    "reqs": "İstekler",
+    "auth": "Yönetim",
+    "explan": "Yalnızca Yönetim yetkisi olanlar kullanıcılara İstekler ve Yönetim yetkilerini verebilirler",
+    "name": "Ad",
+    "proceed": "Seçim ile Devam Et",
+    "goBack": "Geri"
+}

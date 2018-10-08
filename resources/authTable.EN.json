@@ -1,0 +1,11 @@
+{
+    "title": "Authorization Table",
+    "username": "Username",
+    "custom": "Customize",
+    "reqs": "Requests",
+    "auth": "Authority",
+    "explan": "Only if you have the Authorization authority you can give/take Customize or Requests authorities",
+    "name": "Name",
+    "proceed": "Proceed With Selection",
+    "goBack": "Go Back"
+}

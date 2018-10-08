@@ -1,0 +1,11 @@
+{
+    "title": "İstek Tablosu",
+    "userId": "KullanıcıId",
+    "username": "KullanıcıAdı",
+    "excuse": "Mazeret",
+    "request": "İstek",
+    "day": "Gün",
+    "req1": "İstek 1: Durum değişikliği",
+    "req0": "İstek 0: Tatil gününü kullan",
+    "goBack": "Geri"
+}

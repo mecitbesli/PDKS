@@ -1,0 +1,22 @@
+{
+    "title": "Work Hours",
+    "logoutBtn": "Logout",
+    "welcome": "Welcome, ",
+    "absRemind": "Please give excuse for your absencies below if you have any.",
+    "week": "Week: ",
+    "excuseLbl": "Tap/Click on the red places on the graph to enter excuse.",
+    "goBack": "Go Back",
+    "changePWBtn": "Change Password",
+    "modalPWTitle": " ",
+    "pwLbl1": "Enter your old password:",
+    "pwLbl2": "Enter your new password:",
+    "pwLbl3": "Your new password again:",
+    "respPWMatchErr": "Passwords doesn't match",
+    "serverErr": "Server error",
+    "wrongPWErr": "Wrong password",
+    "shortPWErr": "New password is shorter than 6 characters",
+    "pwSuccess": "Success",
+    "modalClose": "Close",
+    "modalSubmit": "Ok",
+    "excuseStatesBtn": "See Your Excuse Results"
+}

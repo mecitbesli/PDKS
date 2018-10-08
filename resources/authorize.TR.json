@@ -1,0 +1,10 @@
+{
+    "title": "Yetkilendirme",
+    "selectIdLbl": "Değiştirmek istediğiniz Id'yi seçiniz",
+    "selectAuthLbl": "Yetki tiplerini seçiniz",
+    "custSel": "Çalışma saatleri değiştirebilme",
+    "requSel": "Kullanıcı isteklerine cevap",
+    "positive": "Yetki Ver",
+    "negative": "Yetkileri Düşür",
+    "goBack": "Geri"
+}

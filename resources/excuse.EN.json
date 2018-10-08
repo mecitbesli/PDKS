@@ -1,0 +1,15 @@
+{
+    "title": "Missing Day Report",
+    "select1Lbl": "You may select a reason for incomplete hours",
+    "opt1-1": "I had been working at another company for Sampaş",
+    "opt1-2": "I was sick",
+    "opt1-3": "I had/have personal problems",
+    "opt1-4": "Other",
+    "select2Lbl": "You may send a request to cover your incomplete hours",
+    "opt2-1": "Sampaş should change my incomplete hours status",
+    "opt2-2": "I wanna use my day off",
+    "select3Lbl": "You must select the day that you want to cover for",
+    "selectFirst": "Choose the day Here",
+    "submit": "Submit",
+    "goBack": "Go Back to Chart"
+}
